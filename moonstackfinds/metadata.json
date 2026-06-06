@@ -1,0 +1,6 @@
+{
+  "name": "MoonStackFinds",
+  "description": "A elegant Pinterest-inspired lifestyle affiliate portal and cozy blog, featuring curated aesthetic picks and personal guides.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

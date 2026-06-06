@@ -1,0 +1,54 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "public/images/uploads"
+public_folder: "/images/uploads"
+
+collections:
+  - name: "products"
+    label: "Products"
+    folder: "src/content/products"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "ID", name: "id", widget: "string", default: "prod-{{uuid}}" }
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Category", name: "category", widget: "select", options: ["Books", "Fashion", "Home Decor", "Desk Setup", "Beauty", "Tech Finds", "Kitchen Finds", "Gift Guides", "Travel Essentials", "Amazon Favorites"] }
+      - { label: "Subcategory", name: "subcategory", widget: "string" }
+      - { label: "Description", name: "description", widget: "text" }
+      - { label: "Personal Review", name: "review", widget: "text" }
+      - { label: "Rating (1-5)", name: "rating", widget: "number", value_type: "float", min: 1, max: 5 }
+      - { label: "Product Image URL / Upload", name: "image", widget: "image" }
+      - { label: "Amazon Affiliate Link", name: "affiliateLink", widget: "string" }
+      - { label: "Featured Product", name: "featured", widget: "boolean", default: false }
+      - { label: "Trending This Week", name: "trending", widget: "boolean", default: false }
+
+  - name: "categories"
+    label: "Categories"
+    folder: "src/content/categories"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "ID", name: "id", widget: "string" }
+      - { label: "Categories Name", name: "name", widget: "string" }
+      - { label: "Description", name: "description", widget: "text" }
+      - { label: "Category Cover Image", name: "image", widget: "image" }
+      - { label: "Lucide Icon Name", name: "icon", widget: "string", default: "Sparkles" }
+
+  - name: "blogs"
+    label: "Blog Posts"
+    folder: "src/content/blogs"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "ID", name: "id", widget: "string", default: "blog-{{uuid}}" }
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Excerpt Description", name: "excerpt", widget: "string" }
+      - { label: "Blog Cover Image", name: "image", widget: "image" }
+      - { label: "Category", name: "category", widget: "string" }
+      - { label: "Publish Date", name: "date", widget: "string" }
+      - { label: "Read Time", name: "readTime", widget: "string", default: "5 min read" }
+      - { label: "Tags", name: "tags", widget: "list" }
+      - { label: "Featured Product IDs (Comma separated)", name: "productIds", widget: "list" }
+      - { label: "Rich Blog Content", name: "body", widget: "markdown" }

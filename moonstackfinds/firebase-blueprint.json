@@ -1,0 +1,87 @@
+{
+  "entities": {
+    "Product": {
+      "title": "Product",
+      "description": "An aesthetic lifestyle product or Amazon find",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "title": { "type": "string" },
+        "category": { "type": "string" },
+        "subcategory": { "type": "string" },
+        "description": { "type": "string" },
+        "review": { "type": "string" },
+        "rating": { "type": "number" },
+        "image": { "type": "string" },
+        "affiliateLink": { "type": "string" },
+        "featured": { "type": "boolean" },
+        "trending": { "type": "boolean" },
+        "tags": { "type": "array" }
+      },
+      "required": ["id", "title", "category", "subcategory", "image", "affiliateLink"]
+    },
+    "Category": {
+      "title": "Category",
+      "description": "A top-level cozy curation category",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "description": { "type": "string" },
+        "image": { "type": "string" },
+        "icon": { "type": "string" }
+      },
+      "required": ["id", "name", "description", "image", "icon"]
+    },
+    "Subcategory": {
+      "title": "Subcategory",
+      "description": "A nested secondary classification of products",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "categoryId": { "type": "string" },
+        "name": { "type": "string" }
+      },
+      "required": ["id", "categoryId", "name"]
+    },
+    "BlogPost": {
+      "title": "BlogPost",
+      "description": "An aesthetic blog review or editorial insights article",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "title": { "type": "string" },
+        "excerpt": { "type": "string" },
+        "content": { "type": "string" },
+        "image": { "type": "string" },
+        "category": { "type": "string" },
+        "date": { "type": "string" },
+        "readTime": { "type": "string" },
+        "tags": { "type": "array" },
+        "productIds": { "type": "array" },
+        "images": { "type": "array" },
+        "affiliateLinks": { "type": "array" },
+        "pinterestImages": { "type": "array" }
+      },
+      "required": ["id", "title", "excerpt", "content", "image", "category", "date"]
+    }
+  },
+  "firestore": {
+    "products/{productId}": {
+      "schema": "Product",
+      "description": "A collection of aesthetic Amazon purchases"
+    },
+    "categories/{categoryId}": {
+      "schema": "Category",
+      "description": "Categories library"
+    },
+    "subcategories/{subcategoryId}": {
+      "schema": "Subcategory",
+      "description": "Dynamic subcategories"
+    },
+    "blogs/{blogId}": {
+      "schema": "BlogPost",
+      "description": "Curated editorial reviews and blogs"
+    }
+  }
+}

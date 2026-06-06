@@ -1,0 +1,46 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Helper to check if the user is authenticated as the dedicated admin
+    function isAdmin() {
+      return request.auth != null && 
+             request.auth.token.email == 'workly244@gmail.com' && 
+             request.auth.token.email_verified == true;
+    }
+
+    // Default deny catch-all
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // Products
+    match /products/{productId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    // Categories
+    match /categories/{categoryId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    // Subcategories
+    match /subcategories/{subcategoryId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    // Blogs
+    match /blogs/{blogId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    // Media
+    match /media/{mediaId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+  }
+}
